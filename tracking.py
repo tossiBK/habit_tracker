@@ -1,49 +1,62 @@
 
 from database import Database
-# from model.Habit import Habit
 from model.HabitPerformanceTracking import HabitPerformanceTracking
 from datetime import datetime
 
 class Tracking():
+    """
+    Class for adding a tracking for the habits.
+
+    Methods
+    -------
+    add(habit_id, date=None)
+        adds the tracking for a given habit
+    """
 
     def add(self, habit_id, date=None):
         """
-            Adds a tracking to an existing habit.
+         Adds a tracking to an existing habit.
+        
+        Parameters
+        ----------
+        habit_id : int
+            id of the habit a tracking will be added
+        date : datetime, optional, default: now()
+            an optional datetime object to set a tracking at a specific time
 
-            :param id of the habit to add a tracking
-            :param a date in the format yyyy-mm-dd hh:mm:ss for adding a different time for the tracking than now (default: now, optional)
-            :return bool status
+        
+        Returns
+        -------
+        status_code : int
+            code if the tracking was added succesful, or a failure code in case of an error
+             1: success
+            -1: habit_id was not a positive integer
+            -2: date was not from type datetime
+            -3: no habit was found for the provided habit_id
         
         """
         # check if id is a number
         if type(habit_id) is not int:
-            return "Error, not a valid integer"
+            return -1
         
         # check if date is in the correct format
-        formatted_date = None
-        if date is not None:
-            try:
-               formatted_date =  datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
-            except ValueError:
-                return "Error, wrong date format. Use: yyyy-mm-dd hh:mm:ss"
+        if date is not None and type(date) is not datetime:
+           return -2
 
-
-        database = Database()
 
         # check the id and test if the habit exists
+        database = Database()
         habit = database.get_habit(habit_id)
 
         if habit is None:
-            return "Error, not found"
+            return -3
         
-        
-        # # create the new tracking
+        # create the new tracking
         t_entry = HabitPerformanceTracking()
-        if formatted_date is not None:
-            t_entry.track_date = formatted_date
+        if date is not None:
+            t_entry.track_date = date
 
         habit.tracking.append(t_entry)
         database.commit()
 
-        return {'code': 1, 'msg': "Success"}
-        
+        return 1

@@ -69,7 +69,5 @@ class Habit(Base):
         back_populates="habit", cascade="all, delete-orphan"
     )
 
-    # streak: 0
-
     def __repr__(self) -> str:
         return f"Habit(id={self.id!r}, name={self.name!r}, note={self.note!r}, periodicity={self.periodicity!r}, created={self.created!r}, active={self.active!r}, tracking={self.tracking!r})"
