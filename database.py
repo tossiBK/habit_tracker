@@ -4,12 +4,10 @@ from sqlalchemy import select
 from sqlalchemy.exc import NoResultFound, IntegrityError, OperationalError
 from model.Habit import Habit
 from model.Base import Base
+import os
 
 
 # from datetime import datetime
-
-class NotFoundException(Exception):
-    "No result for the query was found"
 
 class Database():
     """
@@ -36,10 +34,16 @@ class Database():
         """
         Constructor which initiales the engine and sessions used for the ORM to connect to the database.
         """
-        self.engine = create_engine(f'sqlite:///habit_db.db', echo=False)
+        try: 
+            os.environ["UNITTEST"]
+            db_name = "test_db.db"
+        except KeyError:
+            db_name = "habit_db.db"
+
+        self.engine = create_engine(f'sqlite:///{db_name}', echo=False)
         self.session = Session(self.engine, expire_on_commit=False)
         self.__create_empty_db()
-    
+
     def __create_empty_db(self):
         """
         Private functions, which checks if the table exist at the startup. If not existent, creates it.
@@ -51,7 +55,6 @@ class Database():
         except OperationalError:
             # don´t exists. run script for add the schema
             Base.metadata.create_all(self.engine)
-
 
     def commit(self):
         """

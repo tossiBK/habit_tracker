@@ -84,7 +84,10 @@ class Analytics():
         if habit_id is not None:
             # if we only have one to fetch, add it to a list for the later iteration
             # so we can use the same code simply again
-            habits = [database.get_habit(habit_id)]
+            habit = database.get_habit(habit_id)
+            if habit is None:
+                return []
+            habits = [habit]
         else:
             habits = database.get_habits()
 

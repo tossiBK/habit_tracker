@@ -16,7 +16,7 @@ class HabitPerformanceTracking(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     habit_id: Mapped[int] = mapped_column(ForeignKey("habits.id"))
-    track_date: Mapped[datetime] = mapped_column(insert_default=func.now())
+    track_date: Mapped[datetime] = mapped_column(insert_default=datetime.now())
 
    
     habit: Mapped["Habit"] = relationship(back_populates="tracking")

@@ -62,7 +62,7 @@ class Habit(Base):
     name: Mapped[str] = mapped_column(String(100), unique=True)
     note: Mapped[Optional[str]]
     periodicity: Mapped[PeriodicityTypes] 
-    created: Mapped[datetime] = mapped_column(insert_default=func.now())
+    created: Mapped[datetime] = mapped_column(insert_default=datetime.now())
     active: Mapped[bool] = mapped_column(Boolean, default=1)
 
     tracking: Mapped[List["HabitPerformanceTracking"]] = relationship(
