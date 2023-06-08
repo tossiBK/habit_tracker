@@ -231,3 +231,48 @@ py cli.py analytics show_streaks
 ```
 py cli.py analytics show_streaks --habit_id=1
 ```
+
+### Demo data
+
+The demo data module offers the ability to generate a set of predefined demo data. It also offers the option to reset the apps data to an empty state.
+
+The demo data covers 6 predefined habits and shows the main functionality of the habit application, It generate a set of data starting from the previous month (actual month - 1) and generates data for 28 days (4 weeks * 7 days):
+
+* 1. habit, daily, 28 trackings, no gaps, streak of 24
+* 2. habit, daily, have a gap every 7th day, streak of 6 as max
+* 3. habit, weekly, 4 trackings, no gaps, streak of 4
+* 4. habit, weekly, 2 trackings, gaps every 2nd week
+* 5. habit, monthly, 1 tracking, no gaps
+* 6. habit, monthly, no tracking, deactivated
+
+***attention:** all functions here will delete the actual data in the database!*
+
+```
+py cli.py demo
+```
+
+#### generate data
+
+Please use the following command:
+
+```
+py cli.py demo generate
+```
+
+***example***
+```
+py cli.py demo generate
+```
+
+#### reset data
+
+Please use the following command:
+
+```
+py cli.py demo reset
+```
+
+***example***
+```
+py cli.py demo reset
+```
