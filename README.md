@@ -33,7 +33,6 @@ To switch to the the **virtual environments shell** run the following command in
 ```
 pipenv shell
 ```
-
 * *It is suggested to run the shell. Alternativly, the run command can be used. For more information see the [pipenv documentation](https://pipenv.pypa.io/en/latest/)* *
 
 ## Tests
@@ -43,18 +42,15 @@ This project uses **pyunit** for the unit tests. To run the unit tests open the 
 ```
 py.test
 ```
-
-***attention: for running it, you need to be in the virtual environment shell (see instructions under installation***
-
-
 This will automatically locate the unit tests and run them. For running individual tests or use extended logging functionalities, please see the documentation on the [projects website](https://docs.pytest.org/en/7.3.x/). 
+***attention: for running it, you need to be in the virtual environment shell (see instructions under installation)***
 
 ## Usage
 
 For the basic functionalities (CRUD, tracking, analytics) this app offers a CLI (command line interface). The following listings wil show you how to use the command line 
 for all the basic functioanlities.
 
-***attention: for running it, you need to be in the virtual environment shell (see instructions under installation***
+***attention: for running it, you need to be in the virtual environment shell (see instructions under installation)***
 
 ### CRUD 
 
@@ -76,7 +72,6 @@ py cli.py habit add "name" "periodicity"
 
 * *Optional Arguments* *
 **--note=NOTE** (to add a note, must be string inside "")
-
 * *example* *
 ```
 py cli.py habit add "new habit" "d" --note="MY first created habit"
