@@ -44,14 +44,14 @@ py.test
 ```
 This will automatically locate the unit tests and run them. For running individual tests or use extended logging functionalities, please see the documentation on the [projects website](https://docs.pytest.org/en/7.3.x/).
 
-***attention: for running it, you need to be in the virtual environment shell (see instructions under installation)***
+***attention:** for running it, you need to be in the virtual environment shell (see instructions under installation)*
 
 ## Usage
 
 For the basic functionalities (CRUD, tracking, analytics) this app offers a CLI (command line interface). The following listings wil show you how to use the command line 
 for all the basic functioanlities.
 
-***attention: for running it, you need to be in the virtual environment shell (see instructions under installation)***
+***attention:** for running it, you need to be in the virtual environment shell (see instructions under installation)*
 
 ### CRUD 
 
@@ -61,7 +61,9 @@ The CRUD module offers all basic actions, to create, edit and delete a habit. To
 py cli.py habit
 ```
 
-**To add a new habit use the following command:**
+#### add a new habit
+
+Please use the following command:
 
 ```
 py cli.py habit add "name" "periodicity"
@@ -74,12 +76,13 @@ py cli.py habit add "name" "periodicity"
 *Optional Arguments*
 * **--note=NOTE** (to add a note, must be string inside "")
 
-*example*
+***example***
 ```
 py cli.py habit add "new habit" "d" --note="MY first created habit"
 ```
 
-**To delete an exiting habit use the following command:**
+#### delete an exiting habit
+Please use the following command:
 
 ```
 py cli.py habit delete habit_id 
@@ -88,12 +91,13 @@ py cli.py habit delete habit_id
 *Parameter:*
 * **habit_id:** id of the habit to delete
 
-*example*
+***example***
 ```
 py cli.py habit delete 1
 ```
 
-**To pause / unpause an exiting habit use the following command:**
+#### pause / unpause an exiting habit
+Please use the following command:
 
 ```
 py cli.py habit pause habit_id 
@@ -103,14 +107,16 @@ py cli.py habit unpause habit_id
 *Parameter:*
 * **habit_id:** id of the habit to pause/unpause
 
-*example*
+***example***
 ```
 py cli.py habit pause 1
 ```
 
-**To update an exiting habit use the following command:**
+#### update an exiting habit
 
-* *Mind: at least one optional Argument must be passed too (the field which is intended to be updated)* *
+*Mind: at least one optional Argument must be passed too (the field which is intended to be updated)*
+
+Please use the following command:
 
 ```
 py cli.py habit update habit_id --name=NAME
@@ -123,12 +129,14 @@ py cli.py habit update habit_id --name=NAME
 * **--name=NAME** (to update the name, new name must be unique, must be string inside "")
 * **--note=NOTE** (to update thenote, must be string inside "")
 
-*example*
+***example***
 ```
 py cli.py habit update 1 --name="Updated Habit" --note="Just submitted an updated note"
 ```
 
-**To show all details about an existing habit use the following command:**
+#### show all details about an existing habit
+
+Please use the following command:
 
 ```
 py cli.py habit show habit_id
@@ -137,7 +145,7 @@ py cli.py habit show habit_id
 *Parameter:*
 * **habit_id:** id of the habit to show
 
-*example*
+***example***
 ```
 py cli.py habit show 1
 ```
@@ -151,7 +159,9 @@ evaluation for the streaks. To use it please use the following command:
 py cli.py tracking
 ```
 
-**To add a tracking use the following command:**
+#### add a tracking
+
+Please use the following command:
 
 ```
 py cli.py tracking add habit_id
@@ -163,7 +173,7 @@ py cli.py tracking add habit_id
 *Optional Arguments*
 * **--date=DATESTRING** (date string in the following format 'yyyy-mm-dd hh:mm:ss', if not set it wil use the actual time, allows to make a tracking for a different time )
 
-*example*
+***example***
 ```
 py cli.py habit tracking add 1 --date="2023-06-01 12:00:00"
 ```
@@ -176,7 +186,9 @@ The analytics module offers the functionality for showing statistics about the h
 py cli.py analytics
 ```
 
-**To show all habits registered use the following command:**
+#### show all habits registered
+
+Please use the following command:
 
 ```
 py cli.py analytics show_all
@@ -185,12 +197,13 @@ py cli.py analytics show_all
 *Optional Arguments*
 * **--active=BOOLEAN** (boolean to set if the active or the inactive habits should be shown (paused/unpaused habits), default if not set it True=active habits)
 
-*example*
+***example***
 ```
 py cli.py analytics show_all --active=False
 ```
 
-**To show all habits for a certain periodicity use the following command:**
+#### show all habits for a certain periodicity
+Please use the following command:
 
 ```
 py cli.py analytics show_by_periodicity PERIODICITY
@@ -198,12 +211,14 @@ py cli.py analytics show_by_periodicity PERIODICITY
 *Parameter:*
 * **PERIODICITY:** identifier for the habits period to be shown. allowed values 'd', 'w', 'm'
 
-*example*
+***example***
 ```
 py cli.py analytics show_by_periodicity "d"
 ```
 
-**To show all habits streak use the following command:**
+#### show all habits streak
+
+Please use the following command:
 
 ```
 py cli.py analytics show_streaks
@@ -212,7 +227,7 @@ py cli.py analytics show_streaks
 *Optional Arguments*
 * **--habit_id=id** (id of a habit, to filter the list to a certain habit only)
 
-*example*
+***example***
 ```
 py cli.py analytics show_streaks --habit_id=1
 ```
