@@ -202,10 +202,8 @@ py cli.py analytics show_by_periodicity "d"
 ```
 py cli.py analytics show_streaks
 ```
-
 * *Optional Arguments* *
-**--habit_id=id** (id of a habit, to filter the list to a certain habit only)
-
+* **--habit_id=id** (id of a habit, to filter the list to a certain habit only)
 * *example* *
 ```
 py cli.py analytics show_streaks --habit_id=1
